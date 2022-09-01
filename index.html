@@ -7,21 +7,149 @@
     <title>Babushka</title>
 
     <style>
+      @font-face {
+        font-family: "quicksand";
+        src: url("../font/quicksand-variablefont_wght-webfont.woff2") format("woff2");
+        font-family: "montserrat";
+        src: url("../font/montserrat-variablefont_wght-webfont.woff2") format("woff2");
+      }
+
+      h1 {
+        font-family: "quicksand";
+        font-weight: 400;
+        font-style: normal;
+        font-size: 5rem;
+        line-height: 1.1;
+        padding-top: 40px;
+        text-align: center;
+      }
+
+      h2 {
+        font-family: "quicksand";
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        padding-top: 40px;
+        text-align: center;
+      }
+
+      p {
+        font-family: "montserrat";
+        font-style: normal;
+        font-size: 1rem;
+        line-height: 1.1;
+        margin: 20px;
+        font-weight: bolder;
+      }
+
+      @media screen and (max-width: 800px) {
+        .footer-col {
+          width: 45%;
+          padding: 0 10px;
+        }
+        .footer-col ul li {
+          font-size: 0.8rem;
+          margin-bottom: 10px;
+          color: #80744a;
+        }
+        .footer-col ul li a {
+          font-size: 0.8rem;
+          text-decoration: none;
+          font-weight: 300;
+          display: block;
+          transition: all 0.3s ease;
+        }
+        .copyright {
+          color: #80744a;
+          text-align: center;
+          font-size: 0.6rem;
+          margin-top: 50px;
+          margin-bottom: 0px;
+        }
+      }
+
+      header {
+        display: grid;
+        background: #e5ddd0;
+        color: #414224;
+        padding: 5%;
+        margin-bottom: 5%;
+      }
+
+      .footer {
+        background: #e5ddd0;
+        padding: 5%;
+      }
+
+      .footer-row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      footer ul {
+        list-style: none;
+        width: fit-content;
+        padding: 0px;
+      }
+
+      .footer-col {
+        width: 25%;
+      }
+      .footer-col h4 {
+        font-family: "montserrat";
+        font-size: 1.2rem;
+        color: #80744a;
+        margin-bottom: 35px;
+      }
+      .footer-col h4::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        height: 2px;
+        box-sizing: border-box;
+        width: 75px;
+      }
+      .footer-col ul li {
+        font-family: "montserrat";
+        margin-bottom: 10px;
+        color: #80744a;
+      }
+      .footer-col ul li a {
+        font-size: 1rem;
+        color: #80744a;
+        text-decoration: none;
+        font-weight: 300;
+        color: #80744a;
+        display: block;
+        transition: all 0.3s ease;
+      }
+      .footer-col ul li a:hover {
+        padding-left: 10px;
+      }
+
+      .copyright {
+        font-family: "montserrat";
+        color: #80744a;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 0px;
+      }
+
       #holder {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
 
       article {
-        border: 2px solid black;
-        border-radius: 5%;
+        /* border: 2px solid black; */
         padding: 4px;
         text-align: center;
       }
 
       img {
-        max-width: 100%;
+        max-width: 50%;
       }
 
       nav {
@@ -35,21 +163,58 @@
         overflow-x: auto;
       }
 
+      button {
+        font-family: "montserrat";
+        font-size: 1.1rem;
+        padding: 5px;
+        width: 170px;
+        height: 50px;
+        text-align: center;
+        text-decoration: none;
+        background: #80744a;
+        color: #e5ddd0;
+      }
+
       .valgt {
-        background-color: yellow;
+        background-color: #414224;
+      }
+
+      #popup {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: black;
+        display: none;
+      }
+
+      #popup article {
+        width: 100%;
+        background-color: #e5ddd0;
+        justify-content: center;
+        align-items: center;
+        padding: 10%;
+      }
+
+      #luk {
+        position: fixed;
+        padding: 1em;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>Alle</h1>
+      <h1>DIN BABUSHKA</h1>
 
       <nav>
-        <button data-kategori="alle" class="valgt">Alle</button>
-        <button data-kategori="forretter">Forretter</button>
-        <button data-kategori="hovedretter">Hovedretter</button>
-        <button data-kategori="desserter">Desserter</button>
-        <button data-kategori="drikkevarer">Drikkevare</button>
+        <button data-kategori="alle" class="valgt">ALLE</button>
+        <button data-kategori="forretter">FORRETTER</button>
+        <button data-kategori="hovedretter">HOVEDRETTER</button>
+        <button data-kategori="desserter">DESSERTER</button>
+        <button data-kategori="drikkevarer">DRIKKEVARER</button>
       </nav>
     </header>
 
@@ -63,6 +228,50 @@
         <p class="pris"></p>
       </article>
     </template>
+
+    <section id="popup">
+      <div id="luk">X</div>
+      <article>
+        <img src="" alt="" />
+        <h2></h2>
+        <p class="langbeskrivelse"></p>
+        <p class="pris"></p>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-row">
+          <div class="footer-col">
+            <h4>DIN BABUSHKA</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="produkter.html">Produkter</a></li>
+              <li><a href="omos.html">Om os</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>KONTAKT</h4>
+            <ul>
+              <li>Babushkavej</li>
+              <li>0000 Babushka</li>
+              <li>Babushkaland</li>
+              <li>+45 00 00 00 00</li>
+              <li>info@Babushka.com</li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>SoMe</h4>
+            <ul>
+              <li><a href="https://www.facebook.com/Babushka">Facebook</a></li>
+              <li><a href="https://www.instagram.com/accounts/login/?next=/Babushka/">Instagram</a></li>
+              <li><a href="#">Twitter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <section class="copyright">© 2022 DIN BABUSHKA</section>
+    </footer>
 
     <script>
       const url = "https://babushka-dd8a.restdb.io/rest/menu";
@@ -109,6 +318,7 @@
           console.log("Kategori", item.kategori);
           if (filter == item.kategori || filter == "alle") {
             const klon = template.cloneNode(true).content;
+            klon.querySelector("article").addEventListener("click", () => visItem(item));
             klon.querySelector("img").src = "medium/" + item.billednavn + "-md.jpg";
             klon.querySelector("h2").textContent = item.navn;
             klon.querySelector(".kortbeskrivelse").textContent = item.kortbeskrivelse;
@@ -117,6 +327,21 @@
           }
         });
       }
+
+      document.querySelector("#popup").addEventListener("click", () => (popup.style.display = "none"));
+
+      function visItem(itemData) {
+        console.log("itemData");
+
+        const popup = document.querySelector("#popup");
+        popup.style.display = "flex";
+        popup.querySelector("img").src = "medium/" + itemData.billednavn + "-md.jpg";
+        popup.querySelector("h2").textContent = itemData.navn;
+        popup.querySelector(".langbeskrivelse").textContent = itemData.langbeskrivelse;
+        popup.querySelector(".pris").textContent = itemData.pris;
+      }
+
+      hentData();
     </script>
   </body>
 </html>
