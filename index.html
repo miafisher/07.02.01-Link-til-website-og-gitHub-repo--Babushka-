@@ -20,7 +20,6 @@
         font-style: normal;
         font-size: 5rem;
         line-height: 1.1;
-        padding-top: 40px;
         text-align: center;
       }
 
@@ -30,7 +29,15 @@
         font-style: normal;
         font-size: 2.5rem;
         line-height: 1.1;
-        padding-top: 40px;
+        text-align: center;
+      }
+
+      h3 {
+        font-family: "quicksand";
+        font-weight: 400;
+        font-style: normal;
+        font-size: 2rem;
+        line-height: 1.1;
         text-align: center;
       }
 
@@ -40,13 +47,11 @@
         font-size: 1rem;
         line-height: 1.1;
         margin: 20px;
-        font-weight: bolder;
       }
 
-      @media screen and (max-width: 800px) {
+      @media (max-width: 800px) {
         .footer-col {
-          width: 45%;
-          padding: 0 10px;
+          padding: 0 45px;
         }
         .footer-col ul li {
           font-size: 0.8rem;
@@ -66,6 +71,11 @@
           font-size: 0.6rem;
           margin-top: 50px;
           margin-bottom: 0px;
+        }
+
+        #holder {
+          display: grid;
+          gap: 10px;
         }
       }
 
@@ -135,13 +145,13 @@
         margin-top: 50px;
         margin-bottom: 0px;
       }
-
-      #holder {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+      @media (min-width: 1000px) {
+        #holder {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
       }
-
       article {
         /* border: 2px solid black; */
         padding: 4px;
@@ -202,12 +212,15 @@
         position: fixed;
         padding: 1em;
         cursor: pointer;
+        color: black;
+        font-weight: bolder;
+        font-size: 1.7em;
       }
     </style>
   </head>
   <body>
     <header>
-      <h1>DIN BABUSHKA</h1>
+      <h1>DIN BABUSHKA!</h1>
 
       <nav>
         <button data-kategori="alle" class="valgt">ALLE</button>
@@ -230,12 +243,13 @@
     </template>
 
     <section id="popup">
-      <div id="luk">X</div>
+      <div id="luk">&#x2715</div>
       <article>
         <img src="" alt="" />
         <h2></h2>
         <p class="langbeskrivelse"></p>
-        <p class="pris"></p>
+        <p class="oprindelsesregion"></p>
+        <h3></h3>
       </article>
     </section>
 
@@ -322,7 +336,7 @@
             klon.querySelector("img").src = "medium/" + item.billednavn + "-md.jpg";
             klon.querySelector("h2").textContent = item.navn;
             klon.querySelector(".kortbeskrivelse").textContent = item.kortbeskrivelse;
-            klon.querySelector(".pris").textContent = item.pris;
+            klon.querySelector(".pris").textContent = item.pris + " " + "DKK";
             main.appendChild(klon);
           }
         });
@@ -338,7 +352,8 @@
         popup.querySelector("img").src = "medium/" + itemData.billednavn + "-md.jpg";
         popup.querySelector("h2").textContent = itemData.navn;
         popup.querySelector(".langbeskrivelse").textContent = itemData.langbeskrivelse;
-        popup.querySelector(".pris").textContent = itemData.pris;
+        popup.querySelector(".oprindelsesregion").textContent = itemData.oprindelsesregion;
+        popup.querySelector("h3").textContent = itemData.pris + " " + "DKK";
       }
 
       hentData();
